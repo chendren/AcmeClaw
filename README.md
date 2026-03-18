@@ -2,6 +2,10 @@
   <img src="mascot-avatar.png" alt="AcmeClaw — Tool Up. Build On." width="800">
 </p>
 
+<p align="center">
+  <a href="https://acmeclaw.ai"><img src="https://img.shields.io/badge/🦞_AcmeClaw.ai-Visit_Website-dc3c32?style=for-the-badge&labelColor=0a0e17" alt="Visit AcmeClaw.ai"></a>
+</p>
+
 <h1 align="center">AcmeClaw</h1>
 <h3 align="center">Tool Up. Build On.</h3>
 
