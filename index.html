@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcmeClaw — AI-Powered Customer Experience</title>
+  <meta name="description" content="AcmeClaw transforms customer experience through AI agent orchestration. From the mind behind 33 patents and the book Customer Obsession: The Nucleus Principle.">
+  <meta property="og:title" content="AcmeClaw — AI-Powered Customer Experience">
+  <meta property="og:description" content="Enterprise AI agent orchestration that makes every micro-moment an act of customer obsession.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://acmeclaw.ai">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #060a13;
+      --bg-primary: #0a0e17;
+      --bg-card: #111827;
+      --bg-card-hover: #1a2332;
+      --text-primary: #f0f4f8;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-cyan: #00d4ff;
+      --accent-cyan-dim: rgba(0, 212, 255, 0.15);
+      --accent-amber: #f59e0b;
+      --accent-amber-dim: rgba(245, 158, 11, 0.15);
+      --accent-emerald: #10b981;
+      --accent-violet: #8b5cf6;
+      --gradient-hero: linear-gradient(135deg, #0a0e17 0%, #0f172a 50%, #0a0e17 100%);
+      --border-subtle: rgba(148, 163, 184, 0.08);
+      --border-glow: rgba(0, 212, 255, 0.3);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6, 10, 19, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.75rem 2rem;
+      background: rgba(6, 10, 19, 0.95);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .nav-logo span {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo .logo-ai {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-left: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-cyan); }
+
+    .nav-cta {
+      padding: 0.5rem 1.25rem;
+      background: var(--accent-cyan);
+      color: var(--bg-deep) !important;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: #33ddff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-toggle svg { width: 24px; height: 24px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--gradient-hero);
+      overflow: hidden;
+      padding-top: 4rem;
+    }
+
+    .hero-video-wrapper {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .hero-video-wrapper video {
+      width: 560px;
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: 2px solid rgba(220, 60, 50, 0.25);
+      box-shadow: 0 0 80px rgba(220, 60, 50, 0.12), 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-video-wrapper .video-mute-btn {
+      position: absolute;
+      bottom: 16px;
+      right: calc(50% - 260px);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 3;
+    }
+
+    .hero-video-wrapper .video-mute-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+
+    .hero-video-wrapper .video-mute-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── FOOTER MASCOT ── */
+    .footer-mascot {
+      margin-bottom: 2rem;
+    }
+
+    .footer-mascot img {
+      width: 320px;
+      max-width: 80vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 50%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 50%, transparent 80%);
+      filter: drop-shadow(0 0 40px rgba(220, 60, 50, 0.2));
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    .hero-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent-cyan);
+      top: -15%;
+      right: -10%;
+      opacity: 0.12;
+    }
+
+    .hero-orb-red {
+      width: 450px;
+      height: 450px;
+      background: #dc3c32;
+      top: 5%;
+      left: 30%;
+      opacity: 0.07;
+      animation-delay: -1s;
+    }
+
+    .hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--accent-violet);
+      bottom: -10%;
+      left: -5%;
+      opacity: 0.08;
+      animation-delay: -4s;
+    }
+
+    .hero-orb-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent-amber);
+      top: 40%;
+      left: 50%;
+      opacity: 0.06;
+      animation-delay: -2s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -30px) scale(1.05); }
+      66% { transform: translate(-15px, 15px) scale(0.95); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--accent-cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #e84040 0%, var(--accent-cyan) 50%, #66e0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: var(--bg-deep);
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #33ddff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn svg { width: 18px; height: 18px; }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      font-family: var(--font-mono);
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent-cyan);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT / WHAT IS ACMECLAW ── */
+    #about { background: var(--bg-primary); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      padding: 2rem;
+    }
+
+    .about-diagram {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-diagram::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet), var(--accent-amber));
+    }
+
+    .diagram-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .diagram-layers {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .diagram-layer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-layer:hover {
+      transform: translateX(4px);
+    }
+
+    .diagram-layer .layer-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .layer-1 { background: rgba(0, 212, 255, 0.08); }
+    .layer-1 .layer-icon { background: var(--accent-cyan-dim); color: var(--accent-cyan); }
+    .layer-2 { background: rgba(139, 92, 246, 0.08); }
+    .layer-2 .layer-icon { background: rgba(139, 92, 246, 0.15); color: var(--accent-violet); }
+    .layer-3 { background: rgba(16, 185, 129, 0.08); }
+    .layer-3 .layer-icon { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
+    .layer-4 { background: rgba(245, 158, 11, 0.08); }
+    .layer-4 .layer-icon { background: var(--accent-amber-dim); color: var(--accent-amber); }
+    .layer-5 { background: rgba(244, 63, 94, 0.08); }
+    .layer-5 .layer-icon { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+
+    .diagram-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.25rem 0;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-text .highlight {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* ── CAPABILITIES ── */
+    #capabilities { background: var(--bg-deep); }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .capability-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capability-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-cyan);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .capability-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .capability-card:hover::before { opacity: 1; }
+
+    .capability-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .capability-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .cap-cyan .capability-icon { background: var(--accent-cyan-dim); }
+    .cap-violet .capability-icon { background: rgba(139, 92, 246, 0.15); }
+    .cap-emerald .capability-icon { background: rgba(16, 185, 129, 0.15); }
+    .cap-amber .capability-icon { background: var(--accent-amber-dim); }
+    .cap-rose .capability-icon { background: rgba(244, 63, 94, 0.15); }
+    .cap-sky .capability-icon { background: rgba(56, 189, 248, 0.15); }
+
+    /* ── BOOK ── */
+    #book {
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #0d1220 50%, var(--bg-primary) 100%);
+      overflow: hidden;
+    }
+
+    .book-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .book-video-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(180, 40, 30, 0.12) 0%, rgba(10, 14, 23, 0) 70%);
+      padding: 1rem;
+      border-radius: 24px;
+    }
+
+    .book-video-wrapper video {
+      width: 560px;
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      border: 2px solid rgba(220, 60, 50, 0.35);
+      box-shadow: 0 0 80px rgba(220, 60, 50, 0.15), 0 8px 32px rgba(0, 0, 0, 0.5);
+      transition: box-shadow 0.5s ease;
+    }
+
+    .book-video-wrapper:hover video {
+      border-color: rgba(220, 60, 50, 0.5);
+      box-shadow: 0 0 100px rgba(220, 60, 50, 0.2), 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .book-video-wrapper .video-mute-btn {
+      position: absolute;
+      bottom: 28px;
+      right: calc(50% - 260px);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 3;
+    }
+
+    .book-video-wrapper .video-mute-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+
+    .book-video-wrapper .video-mute-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .book-info {
+      text-align: center;
+      max-width: 750px;
+    }
+
+    .book-info h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .book-info .book-full-title {
+      font-size: 1rem;
+      color: var(--accent-cyan);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .book-info p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .book-concepts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 2rem auto;
+      max-width: 500px;
+    }
+
+    .book-concept {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .book-concept::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .book-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-book svg { width: 18px; height: 18px; }
+
+    .btn-book-primary {
+      background: var(--accent-amber);
+      color: var(--bg-deep);
+    }
+
+    .btn-book-primary:hover {
+      background: #fbbf24;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-book-github {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-book-github:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ── AUTHOR ── */
+    #author { background: var(--bg-deep); }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .author-photo {
+      width: 300px;
+      height: 360px;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .author-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+    }
+
+    .author-initials {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan-dim), rgba(139, 92, 246, 0.15));
+      border: 2px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-name-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-name-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .author-name-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .author-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-badge {
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-aws {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .badge-patents {
+      background: rgba(139, 92, 246, 0.12);
+      color: var(--accent-violet);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .badge-claude {
+      background: var(--accent-cyan-dim);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .author-details h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .author-details p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .author-expertise {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .expertise-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .expertise-item .exp-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .expertise-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .expertise-item p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* ── CONTACT / CTA ── */
+    #contact {
+      background: var(--bg-primary);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0, 212, 255, 0.04) 0%, transparent 70%);
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-content .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .contact-link svg { width: 20px; height: 20px; }
+
+    .contact-linkedin {
+      background: rgba(10, 102, 194, 0.15);
+      color: #5b9cd6;
+      border: 1px solid rgba(10, 102, 194, 0.25);
+    }
+
+    .contact-linkedin:hover {
+      background: rgba(10, 102, 194, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .contact-github {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-github:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .contact-email {
+      background: var(--accent-cyan-dim);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+    }
+
+    .contact-email:hover {
+      background: rgba(0, 212, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-deep);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand svg { width: 24px; height: 24px; }
+
+    .footer-brand span {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .book-grid,
+      .author-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-visual { order: -1; }
+
+      .book-video-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .author-photo {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        height: 300px;
+      }
+
+      .author-grid {
+        text-align: center;
+      }
+
+      .author-expertise {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(6, 10, 19, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 200;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.25rem; }
+      .mobile-toggle { display: block; z-index: 201; }
+
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1.05rem; }
+
+      .hero-video-wrapper .video-mute-btn,
+      .book-video-wrapper .video-mute-btn {
+        right: calc(50% - 42vw);
+      }
+
+      section { padding: 4rem 1.25rem; }
+
+      .book-concepts {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn { width: 100%; max-width: 300px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="16" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+        <path d="M12 22 C12 22 14 14 18 14 C22 14 24 22 24 22" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 18 C10 18 8 14 6 13" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M26 18 C26 18 28 14 30 13" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="15.5" cy="18" r="1.5" fill="#00d4ff"/>
+        <circle cx="20.5" cy="18" r="1.5" fill="#00d4ff"/>
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+            <stop offset="0%" stop-color="#00d4ff"/>
+            <stop offset="100%" stop-color="#8b5cf6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>AcmeClaw<span class="logo-ai">.ai</span></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#author">Author</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-red"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-video-wrapper">
+        <video id="heroVideo" autoplay loop muted playsinline>
+          <source src="hero-video.mp4" type="video/mp4">
+        </video>
+        <button class="video-mute-btn" id="videoMuteBtn" aria-label="Unmute video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="muteIcon">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+        </button>
+      </div>
+
+      <h1>
+        Every Micro-Moment Is<br>
+        <span class="gradient-text">An Act of Obsession</span>
+      </h1>
+
+      <p>
+        AcmeClaw harnesses AI agent orchestration to transform how organizations
+        understand, anticipate, and serve their customers — making every interaction count.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#capabilities" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Explore Capabilities
+        </a>
+        <a href="#book" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Read the Book
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value">33</div>
+          <div class="hero-stat-label">Patents</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">15+</div>
+          <div class="hero-stat-label">Years in CX</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">AWS</div>
+          <div class="hero-stat-label">Principal SA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <span class="section-label">What is AcmeClaw</span>
+          <h2 class="section-title">AI Agents That Serve,<br>Not Deflect</h2>
+          <p>
+            AcmeClaw is a consultancy and platform born from the conviction that
+            <span class="highlight">the customer is the nucleus</span> around which
+            everything must orbit. We design AI-powered customer experience architectures
+            that turn every interaction into an act of genuine obsession.
+          </p>
+          <p>
+            Drawing from deep expertise in AWS, GenAI, and contact center transformation,
+            AcmeClaw helps organizations move beyond chatbot theater to build
+            <span class="highlight">intelligent, anticipatory systems</span> that understand
+            context, remember history, and take real action on behalf of customers.
+          </p>
+          <p>
+            Inspired by the open-source AI agent movement, AcmeClaw bridges the gap
+            between cutting-edge agent orchestration and enterprise-grade customer
+            experience — no vendor lock-in, no black boxes, no deflection.
+          </p>
+        </div>
+
+        <div class="about-visual fade-in fade-in-delay-2">
+          <div class="about-diagram">
+            <div class="diagram-title">The Obsession Stack</div>
+            <div class="diagram-layers">
+              <div class="diagram-layer layer-1">
+                <div class="layer-icon">&#x1f310;</div>
+                <span>Omnichannel Event Fabric</span>
+              </div>
+              <div class="diagram-arrow">&#x2193;</div>
+              <div class="diagram-layer layer-2">
+                <div class="layer-icon">&#x1f9e0;</div>
+                <span>Intent Classification &amp; Routing</span>
+              </div>
+              <div class="diagram-arrow">&#x2193;</div>
+              <div class="diagram-layer layer-3">
+                <div class="layer-icon">&#x1f6e4;</div>
+                <span>Customer Journey Engine</span>
+              </div>
+              <div class="diagram-arrow">&#x2193;</div>
+              <div class="diagram-layer layer-4">
+                <div class="layer-icon">&#x26a1;</div>
+                <span>Next-Best-Action Orchestrator</span>
+              </div>
+              <div class="diagram-arrow">&#x2193;</div>
+              <div class="diagram-layer layer-5">
+                <div class="layer-icon">&#x1f4ca;</div>
+                <span>Real-Time Obsession Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CAPABILITIES ── -->
+  <section id="capabilities">
+    <div class="section-inner">
+      <span class="section-label fade-in">Capabilities</span>
+      <h2 class="section-title fade-in">What We Build</h2>
+      <p class="section-subtitle fade-in">Enterprise AI solutions that put the customer at the center of every decision, every interaction, every micro-moment.</p>
+
+      <div class="capabilities-grid">
+        <div class="capability-card cap-cyan fade-in">
+          <div class="capability-icon">&#x1f916;</div>
+          <h3>AI Agent Orchestration</h3>
+          <p>Design and deploy autonomous AI agents that understand context, take action, and learn — built on Amazon Bedrock AgentCore and open standards.</p>
+        </div>
+
+        <div class="capability-card cap-violet fade-in fade-in-delay-1">
+          <div class="capability-icon">&#x1f504;</div>
+          <h3>Omnichannel CX Platforms</h3>
+          <p>Unified customer experience across voice, chat, email, social, and messaging — every channel connected, every journey tracked.</p>
+        </div>
+
+        <div class="capability-card cap-emerald fade-in fade-in-delay-2">
+          <div class="capability-icon">&#x1f52e;</div>
+          <h3>Predictive Journey Mapping</h3>
+          <p>AI-driven customer journey analysis that anticipates needs before they arise, turning reactive support into proactive service.</p>
+        </div>
+
+        <div class="capability-card cap-amber fade-in fade-in-delay-3">
+          <div class="capability-icon">&#x1f3af;</div>
+          <h3>Next-Best-Action Engines</h3>
+          <p>Real-time recommendation systems that determine the optimal action for each customer interaction, balancing empathy with efficiency.</p>
+        </div>
+
+        <div class="capability-card cap-rose fade-in fade-in-delay-4">
+          <div class="capability-icon">&#x1f4dd;</div>
+          <h3>CX Strategy & Architecture</h3>
+          <p>End-to-end consulting on contact center transformation, GenAI adoption, and building customer-obsessed organizations.</p>
+        </div>
+
+        <div class="capability-card cap-sky fade-in fade-in-delay-5">
+          <div class="capability-icon">&#x1f4d0;</div>
+          <h3>The Obsession Scorecard</h3>
+          <p>Custom measurement frameworks that go beyond NPS and CSAT to capture what actually matters — are you truly obsessed with your customer?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BOOK ── -->
+  <section id="book">
+    <div class="section-inner">
+      <div class="book-grid">
+        <div class="book-video-wrapper fade-in">
+          <video id="bookVideo" autoplay loop muted playsinline>
+            <source src="book-video.mp4" type="video/mp4">
+          </video>
+          <button class="video-mute-btn" id="bookMuteBtn" aria-label="Unmute video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" id="bookMuteIcon">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="book-info fade-in fade-in-delay-2">
+          <span class="section-label">The Book</span>
+          <h3>Customer Obsession:<br>The Nucleus Principle</h3>
+          <p class="book-full-title">How AI-Powered Organizations Make Every Micro-Moment an Act of Customer Obsession</p>
+          <p>
+            The definitive guide to building organizations where the customer isn't just
+            "first" — they're the nucleus around which everything orbits. This book bridges
+            the gap between customer experience philosophy and the AI architectures that
+            make it real.
+          </p>
+          <p>
+            From the Obsession Stack to the Maitre D' Principle, from Amazon Bedrock AgentCore
+            to the Customer Obsession Scorecard — this is the playbook for leaders who refuse
+            to let AI become another layer of deflection.
+          </p>
+
+          <div class="book-concepts">
+            <div class="book-concept">The Nucleus Principle</div>
+            <div class="book-concept">The Obsession Stack</div>
+            <div class="book-concept">Micro-Moment Architecture</div>
+            <div class="book-concept">The Maitre D' Principle</div>
+            <div class="book-concept">AgentCore Deep Dive</div>
+            <div class="book-concept">Obsession Scorecard</div>
+            <div class="book-concept">Industry Playbooks</div>
+            <div class="book-concept">Two-Way Door Decisions</div>
+          </div>
+
+          <div class="book-buttons">
+            <a href="#" class="btn-book btn-book-primary" id="bookPreorder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Pre-Order the Book
+            </a>
+            <a href="https://github.com/chadhendren/customer-obsession-book" class="btn-book btn-book-github" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AUTHOR ── -->
+  <section id="author">
+    <div class="section-inner">
+      <div class="author-grid">
+        <div class="author-photo fade-in">
+          <div class="author-initials">CH</div>
+          <div class="author-name-card">
+            <h4>Chad Hendren</h4>
+            <p>Founder, AcmeClaw</p>
+          </div>
+          <div class="author-badges">
+            <span class="author-badge badge-aws">AWS Principal SA</span>
+            <span class="author-badge badge-patents">33 Patents</span>
+            <span class="author-badge badge-claude">Claude Champion</span>
+          </div>
+        </div>
+
+        <div class="author-details fade-in fade-in-delay-2">
+          <span class="section-label">The Mind Behind AcmeClaw</span>
+          <h3>Built by Someone Who's Been in the Trenches</h3>
+          <p>
+            Chad Hendren is a Principal Solutions Architect and Global Lead for AI/GenAI in
+            Customer Experience at AWS. With 33 patents, deep expertise in contact center
+            transformation, and recognition as an Anthropic Claude Champion, he brings a
+            rare combination of hands-on technical depth and strategic vision.
+          </p>
+          <p>
+            His work sits at the intersection of enterprise AI architecture and customer
+            obsession — helping the world's largest organizations build AI systems that
+            genuinely serve their customers rather than deflecting them.
+          </p>
+
+          <div class="author-expertise">
+            <div class="expertise-item">
+              <div class="exp-icon" style="background: var(--accent-amber-dim); color: var(--accent-amber);">&#x2601;</div>
+              <div>
+                <h4>AWS & Cloud Architecture</h4>
+                <p>Principal-level cloud architecture across AI, ML, and CX services</p>
+              </div>
+            </div>
+            <div class="expertise-item">
+              <div class="exp-icon" style="background: var(--accent-cyan-dim); color: var(--accent-cyan);">&#x1f9e0;</div>
+              <div>
+                <h4>GenAI & Agent Systems</h4>
+                <p>Bedrock, AgentCore, autonomous AI agent orchestration</p>
+              </div>
+            </div>
+            <div class="expertise-item">
+              <div class="exp-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">&#x1f4de;</div>
+              <div>
+                <h4>Contact Center Transformation</h4>
+                <p>End-to-end CX modernization for enterprise organizations</p>
+              </div>
+            </div>
+            <div class="expertise-item">
+              <div class="exp-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-violet);">&#x1f4a1;</div>
+              <div>
+                <h4>Innovation & Patents</h4>
+                <p>33 patents in AI, CX, and enterprise technology</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-inner contact-content">
+      <span class="section-label fade-in">Let's Talk</span>
+      <h2 class="section-title fade-in">Ready to Put Your Customer<br>at the Nucleus?</h2>
+      <p class="section-subtitle fade-in" style="margin-left: auto; margin-right: auto;">
+        Whether you're rethinking your CX architecture, exploring AI agent orchestration,
+        or building a customer-obsessed organization from scratch — let's connect.
+      </p>
+
+      <div class="contact-links fade-in fade-in-delay-2">
+        <a href="https://linkedin.com/in/chadhendren" class="contact-link contact-linkedin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/chadhendren" class="contact-link contact-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:chad@acmeclaw.ai" class="contact-link contact-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          chad@acmeclaw.ai
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-mascot">
+      <img src="mascot.png" alt="AcmeClaw — Tool Up. Build On." width="320" height="180">
+    </div>
+    <div class="footer-brand">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="16" stroke="rgba(0,212,255,0.3)" stroke-width="2" fill="none"/>
+        <path d="M12 22 C12 22 14 14 18 14 C22 14 24 22 24 22" stroke="rgba(0,212,255,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 18 C10 18 8 14 6 13" stroke="rgba(0,212,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M26 18 C26 18 28 14 30 13" stroke="rgba(0,212,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>AcmeClaw.ai</span>
+    </div>
+    <p>&copy; 2026 AcmeClaw. All rights reserved. &middot; Tool Up. Build On.</p>
+  </footer>
+
+  <script>
+    // ── Video mute/unmute ──
+    const heroVideo = document.getElementById('heroVideo');
+    const muteBtn = document.getElementById('videoMuteBtn');
+    const muteIcon = document.getElementById('muteIcon');
+
+    function setMuteIcon(muted) {
+      while (muteIcon.firstChild) muteIcon.removeChild(muteIcon.firstChild);
+      const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      poly.setAttribute('points', '11 5 6 9 2 9 2 15 6 15 11 19 11 5');
+      muteIcon.appendChild(poly);
+      if (muted) {
+        const l1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l1.setAttribute('x1','23'); l1.setAttribute('y1','9'); l1.setAttribute('x2','17'); l1.setAttribute('y2','15');
+        const l2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l2.setAttribute('x1','17'); l2.setAttribute('y1','9'); l2.setAttribute('x2','23'); l2.setAttribute('y2','15');
+        muteIcon.appendChild(l1); muteIcon.appendChild(l2);
+      } else {
+        const p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p1.setAttribute('d', 'M19.07 4.93a10 10 0 0 1 0 14.14');
+        const p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p2.setAttribute('d', 'M15.54 8.46a5 5 0 0 1 0 7.07');
+        muteIcon.appendChild(p1); muteIcon.appendChild(p2);
+      }
+    }
+
+    muteBtn.addEventListener('click', () => {
+      heroVideo.muted = !heroVideo.muted;
+      setMuteIcon(heroVideo.muted);
+    });
+
+    // ── Book video mute/unmute ──
+    const bookVideo = document.getElementById('bookVideo');
+    const bookMuteBtn = document.getElementById('bookMuteBtn');
+    const bookMuteIcon = document.getElementById('bookMuteIcon');
+
+    bookMuteBtn.addEventListener('click', () => {
+      bookVideo.muted = !bookVideo.muted;
+      setMuteIcon2(bookVideo.muted);
+    });
+
+    function setMuteIcon2(muted) {
+      while (bookMuteIcon.firstChild) bookMuteIcon.removeChild(bookMuteIcon.firstChild);
+      const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      poly.setAttribute('points', '11 5 6 9 2 9 2 15 6 15 11 19 11 5');
+      bookMuteIcon.appendChild(poly);
+      if (muted) {
+        const l1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l1.setAttribute('x1','23'); l1.setAttribute('y1','9'); l1.setAttribute('x2','17'); l1.setAttribute('y2','15');
+        const l2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l2.setAttribute('x1','17'); l2.setAttribute('y1','9'); l2.setAttribute('x2','23'); l2.setAttribute('y2','15');
+        bookMuteIcon.appendChild(l1); bookMuteIcon.appendChild(l2);
+      } else {
+        const p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p1.setAttribute('d', 'M19.07 4.93a10 10 0 0 1 0 14.14');
+        const p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p2.setAttribute('d', 'M15.54 8.46a5 5 0 0 1 0 7.07');
+        bookMuteIcon.appendChild(p1); bookMuteIcon.appendChild(p2);
+      }
+    }
+
+    // ── Nav scroll effect ──
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Mobile menu toggle ──
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ── Scroll animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Smooth scroll for nav links ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── Typing effect for hero stat counters ──
+    function animateValue(element, start, end, duration, suffix = '') {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * (end - start) + start);
+        element.textContent = current + suffix;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stats = entry.target.querySelectorAll('.hero-stat-value');
+          stats.forEach(stat => {
+            const text = stat.textContent;
+            if (text === '33') animateValue(stat, 0, 33, 1500);
+            else if (text === '15+') animateValue(stat, 0, 15, 1200, '+');
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObserver.observe(heroStats);
+  </script>
+
+</body>
+</html>
