@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AcmeClaw — AI-Powered Customer Experience</title>
-  <meta name="description" content="AcmeClaw transforms customer experience through AI agent orchestration. From the mind behind 33 patents and the book Customer Obsession: The Nucleus Principle.">
-  <meta property="og:title" content="AcmeClaw — AI-Powered Customer Experience">
-  <meta property="og:description" content="Enterprise AI agent orchestration that makes every micro-moment an act of customer obsession.">
+  <title>AcmeClaw — AI Agents, Managed OpenClaw, and Custom Development</title>
+  <meta name="description" content="AcmeClaw delivers managed OpenClaw instances, AI agent development, professional services, and custom application development. From the author of Ship the Press Release.">
+  <meta property="og:title" content="AcmeClaw — Tool Up. Build On.">
+  <meta property="og:description" content="Managed OpenClaw, AI Agents, Professional Services, and Custom Application Development. Ship the Press Release — then build everything else.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://acmeclaw.ai">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -1047,6 +1047,160 @@
       transform: translateY(-2px);
     }
 
+    /* ── PRE-ORDER MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 480px;
+      width: 90vw;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      padding: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text-primary); }
+
+    .modal h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: var(--bg-deep);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+
+    .form-group input::placeholder { color: var(--text-muted); }
+
+    .form-group select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select option { background: var(--bg-card); }
+
+    .form-submit {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--accent-amber);
+      color: var(--bg-deep);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background: #fbbf24;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .form-success .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
+    }
+
+    .form-success h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
     /* ── FOOTER ── */
     footer {
       padding: 3rem 2rem;
@@ -1204,9 +1358,9 @@
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#book">The Book</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#author">Author</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
@@ -1243,19 +1397,20 @@
       </div>
 
       <h1>
-        Every Micro-Moment Is<br>
-        <span class="gradient-text">An Act of Obsession</span>
+        Ship the Press Release.<br>
+        <span class="gradient-text">Then Build Everything Else.</span>
       </h1>
 
       <p>
-        AcmeClaw harnesses AI agent orchestration to transform how organizations
-        understand, anticipate, and serve their customers — making every interaction count.
+        AcmeClaw delivers managed OpenClaw instances, AI agent development,
+        professional services, and custom applications — built with the Working
+        Backwards methodology that starts at the end state and works toward it.
       </p>
 
       <div class="hero-buttons">
-        <a href="#capabilities" class="btn btn-primary">
+        <a href="#services" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          Explore Capabilities
+          Explore Services
         </a>
         <a href="#book" class="btn btn-secondary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -1281,58 +1436,58 @@
   </section>
 
   <!-- ── ABOUT ── -->
+  <!-- ── ABOUT ── -->
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-text fade-in">
           <span class="section-label">What is AcmeClaw</span>
-          <h2 class="section-title">AI Agents That Serve,<br>Not Deflect</h2>
+          <h2 class="section-title">Know What You're Building<br>Before You Build It</h2>
           <p>
-            AcmeClaw is a consultancy and platform born from the conviction that
-            <span class="highlight">the customer is the nucleus</span> around which
-            everything must orbit. We design AI-powered customer experience architectures
-            that turn every interaction into an act of genuine obsession.
+            AcmeClaw is a services company built on one principle:
+            <span class="highlight">the quality of what you build is directly proportional
+            to the clarity of the intent that preceded it.</span> We apply the Working
+            Backwards methodology to everything — from managed AI agent deployments
+            to custom application development.
           </p>
           <p>
-            Drawing from deep expertise in AWS, GenAI, and contact center transformation,
-            AcmeClaw helps organizations move beyond chatbot theater to build
-            <span class="highlight">intelligent, anticipatory systems</span> that understand
-            context, remember history, and take real action on behalf of customers.
+            Born from 30+ years in CX and Telco, 33 patents, and the book
+            <span class="highlight">Ship the Press Release</span>, AcmeClaw bridges the gap
+            between what AI tools can do and what organizations actually need them to do.
+            No chatbot theater. No building the wrong thing faster.
           </p>
           <p>
-            Inspired by the open-source AI agent movement, AcmeClaw bridges the gap
-            between cutting-edge agent orchestration and enterprise-grade customer
-            experience — no vendor lock-in, no black boxes, no deflection.
+            We write the press release first. Then we build everything else.
           </p>
         </div>
 
         <div class="about-visual fade-in fade-in-delay-2">
           <div class="about-diagram">
-            <div class="diagram-title">The Obsession Stack</div>
+            <div class="diagram-title">The Working Backwards Method</div>
             <div class="diagram-layers">
               <div class="diagram-layer layer-1">
-                <div class="layer-icon">&#x1f310;</div>
-                <span>Omnichannel Event Fabric</span>
+                <div class="layer-icon">&#x1f4dd;</div>
+                <span>Ship the Press Release (PR/FAQ)</span>
               </div>
               <div class="diagram-arrow">&#x2193;</div>
               <div class="diagram-layer layer-2">
                 <div class="layer-icon">&#x1f9e0;</div>
-                <span>Intent Classification &amp; Routing</span>
+                <span>Specification &amp; Steering Docs</span>
               </div>
               <div class="diagram-arrow">&#x2193;</div>
               <div class="diagram-layer layer-3">
                 <div class="layer-icon">&#x1f6e4;</div>
-                <span>Customer Journey Engine</span>
+                <span>Test-First Architecture</span>
               </div>
               <div class="diagram-arrow">&#x2193;</div>
               <div class="diagram-layer layer-4">
                 <div class="layer-icon">&#x26a1;</div>
-                <span>Next-Best-Action Orchestrator</span>
+                <span>Autonomous Agent Build Loop</span>
               </div>
               <div class="diagram-arrow">&#x2193;</div>
               <div class="diagram-layer layer-5">
-                <div class="layer-icon">&#x1f4ca;</div>
-                <span>Real-Time Obsession Analytics</span>
+                <div class="layer-icon">&#x1f680;</div>
+                <span>Ship What You Actually Meant</span>
               </div>
             </div>
           </div>
@@ -1341,48 +1496,48 @@
     </div>
   </section>
 
-  <!-- ── CAPABILITIES ── -->
-  <section id="capabilities">
+  <!-- ── SERVICES ── -->
+  <section id="services">
     <div class="section-inner">
-      <span class="section-label fade-in">Capabilities</span>
-      <h2 class="section-title fade-in">What We Build</h2>
-      <p class="section-subtitle fade-in">Enterprise AI solutions that put the customer at the center of every decision, every interaction, every micro-moment.</p>
+      <span class="section-label fade-in">Services</span>
+      <h2 class="section-title fade-in">What We Deliver</h2>
+      <p class="section-subtitle fade-in">From managed infrastructure to custom builds — every engagement starts with knowing exactly what done looks like.</p>
 
       <div class="capabilities-grid">
         <div class="capability-card cap-cyan fade-in">
-          <div class="capability-icon">&#x1f916;</div>
-          <h3>AI Agent Orchestration</h3>
-          <p>Design and deploy autonomous AI agents that understand context, take action, and learn — built on Amazon Bedrock AgentCore and open standards.</p>
+          <div class="capability-icon">&#x1f99e;</div>
+          <h3>Managed OpenClaw Instances</h3>
+          <p>Fully managed, self-hosted OpenClaw deployments — your personal AI agent gateway running on your infrastructure, maintained by us. WhatsApp, Slack, Discord, and 20+ channels connected out of the box.</p>
         </div>
 
         <div class="capability-card cap-violet fade-in fade-in-delay-1">
-          <div class="capability-icon">&#x1f504;</div>
-          <h3>Omnichannel CX Platforms</h3>
-          <p>Unified customer experience across voice, chat, email, social, and messaging — every channel connected, every journey tracked.</p>
+          <div class="capability-icon">&#x1f916;</div>
+          <h3>AI Agent Development</h3>
+          <p>Custom AI agents that take real action — not chatbots that deflect. Built with specification coding, test-first architecture, and the Working Backwards methodology from the book.</p>
         </div>
 
         <div class="capability-card cap-emerald fade-in fade-in-delay-2">
-          <div class="capability-icon">&#x1f52e;</div>
-          <h3>Predictive Journey Mapping</h3>
-          <p>AI-driven customer journey analysis that anticipates needs before they arise, turning reactive support into proactive service.</p>
+          <div class="capability-icon">&#x1f4bc;</div>
+          <h3>Professional Services</h3>
+          <p>Strategic consulting for AI adoption, contact center transformation, and CX architecture. 30+ years of Telco and CX expertise applied to your specific challenges.</p>
         </div>
 
         <div class="capability-card cap-amber fade-in fade-in-delay-3">
-          <div class="capability-icon">&#x1f3af;</div>
-          <h3>Next-Best-Action Engines</h3>
-          <p>Real-time recommendation systems that determine the optimal action for each customer interaction, balancing empathy with efficiency.</p>
+          <div class="capability-icon">&#x1f4cb;</div>
+          <h3>Project Management</h3>
+          <p>End-to-end project leadership for AI initiatives — from the initial PR/FAQ through deployment. We manage the complexity so you ship on time and on target.</p>
         </div>
 
         <div class="capability-card cap-rose fade-in fade-in-delay-4">
-          <div class="capability-icon">&#x1f4dd;</div>
-          <h3>CX Strategy & Architecture</h3>
-          <p>End-to-end consulting on contact center transformation, GenAI adoption, and building customer-obsessed organizations.</p>
+          <div class="capability-icon">&#x1f3ae;</div>
+          <h3>AI Adoption Simulations</h3>
+          <p>Business simulation exercises that let your team experience AI adoption decisions before committing resources. Discover failure modes in a sandbox, not in production.</p>
         </div>
 
         <div class="capability-card cap-sky fade-in fade-in-delay-5">
-          <div class="capability-icon">&#x1f4d0;</div>
-          <h3>The Obsession Scorecard</h3>
-          <p>Custom measurement frameworks that go beyond NPS and CSAT to capture what actually matters — are you truly obsessed with your customer?</p>
+          <div class="capability-icon">&#x1f528;</div>
+          <h3>Custom Application Development</h3>
+          <p>Full-stack application development using specification coding and AI-assisted build loops. We write the press release for your product, define every test, then build it.</p>
         </div>
       </div>
     </div>
@@ -1407,29 +1562,28 @@
 
         <div class="book-info fade-in fade-in-delay-2">
           <span class="section-label">The Book</span>
-          <h3>Customer Obsession:<br>The Nucleus Principle</h3>
-          <p class="book-full-title">How AI-Powered Organizations Make Every Micro-Moment an Act of Customer Obsession</p>
+          <h3>Ship the Press Release</h3>
+          <p class="book-full-title">How the AcmeClaw PR/FAQ Was Written, Every Test Defined, and Zero Code Existed — Then the Agent Built It</p>
           <p>
-            The definitive guide to building organizations where the customer isn't just
-            "first" — they're the nucleus around which everything orbits. This book bridges
-            the gap between customer experience philosophy and the AI architectures that
-            make it real.
+            A practitioner's guide to Working Backwards, Specification Coding, and the art
+            of not fighting your AI. For the developer who knows exactly what they want to
+            build and keeps building something else.
           </p>
           <p>
-            From the Obsession Stack to the Maitre D' Principle, from Amazon Bedrock AgentCore
-            to the Customer Obsession Scorecard — this is the playbook for leaders who refuse
-            to let AI become another layer of deflection.
+            This book is the methodology behind everything AcmeClaw delivers. From vibe coding
+            to specification coding, from steering docs to autonomous build loops — it's the
+            playbook for building what you actually meant, not the generic version of your idea.
           </p>
 
           <div class="book-concepts">
-            <div class="book-concept">The Nucleus Principle</div>
-            <div class="book-concept">The Obsession Stack</div>
-            <div class="book-concept">Micro-Moment Architecture</div>
-            <div class="book-concept">The Maitre D' Principle</div>
-            <div class="book-concept">AgentCore Deep Dive</div>
-            <div class="book-concept">Obsession Scorecard</div>
-            <div class="book-concept">Industry Playbooks</div>
-            <div class="book-concept">Two-Way Door Decisions</div>
+            <div class="book-concept">Working Backwards / PR/FAQ</div>
+            <div class="book-concept">Vibe vs. Spec Coding</div>
+            <div class="book-concept">Steering Docs & Hooks</div>
+            <div class="book-concept">AI Agents & Skills</div>
+            <div class="book-concept">Test-First Build Loops</div>
+            <div class="book-concept">Prompt Engineering</div>
+            <div class="book-concept">Non-English Dev Support</div>
+            <div class="book-concept">Companion Repository</div>
           </div>
 
           <div class="book-buttons">
@@ -1439,7 +1593,7 @@
             </a>
             <a href="https://github.com/chendren/AcmeClaw" class="btn-book btn-book-github" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              View on GitHub
+              Companion Repo
             </a>
           </div>
         </div>
@@ -1469,43 +1623,45 @@
           <h3>Built by Someone Who's Been in the Trenches</h3>
           <p>
             Chad Hendren is an inventor, author, and veteran of 30+ years in customer
-            experience and telecommunications. With 33 patents and deep expertise in
-            AI-powered CX transformation, he brings a rare combination of hands-on
-            technical depth and strategic vision to every engagement.
+            experience and telecommunications. With 33 patents and the book
+            <em>Ship the Press Release</em>, he brings a practitioner's perspective
+            to AI adoption — grounded in what actually works in production, not what
+            sounds good in a conference talk.
           </p>
           <p>
-            His work sits at the intersection of AI architecture and customer
-            obsession — helping organizations build intelligent systems that
-            genuinely serve their customers rather than deflecting them.
+            Three years ago, he couldn't write a Hello World application. Today, he's
+            the author of a methodology for building with AI that starts where it should:
+            at the end. The Working Backwards approach behind AcmeClaw is the same
+            discipline that produced the book, the company, and every engagement we deliver.
           </p>
 
           <div class="author-expertise">
             <div class="expertise-item">
-              <div class="exp-icon" style="background: var(--accent-amber-dim); color: var(--accent-amber);">&#x2601;</div>
+              <div class="exp-icon" style="background: var(--accent-amber-dim); color: var(--accent-amber);">&#x1f4de;</div>
               <div>
-                <h4>AWS & Cloud Architecture</h4>
-                <p>Principal-level cloud architecture across AI, ML, and CX services</p>
+                <h4>30+ Years CX & Telco</h4>
+                <p>Contact center transformation, customer experience architecture</p>
               </div>
             </div>
             <div class="expertise-item">
               <div class="exp-icon" style="background: var(--accent-cyan-dim); color: var(--accent-cyan);">&#x1f9e0;</div>
               <div>
-                <h4>GenAI & Agent Systems</h4>
-                <p>Bedrock, AgentCore, autonomous AI agent orchestration</p>
+                <h4>AI Agents & OpenClaw</h4>
+                <p>Managed deployments, autonomous agents, specification coding</p>
               </div>
             </div>
             <div class="expertise-item">
-              <div class="exp-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">&#x1f4de;</div>
+              <div class="exp-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">&#x1f4a1;</div>
               <div>
-                <h4>Contact Center Transformation</h4>
-                <p>End-to-end CX modernization for enterprise organizations</p>
+                <h4>33 Patents</h4>
+                <p>AI, CX, telecommunications, and enterprise technology</p>
               </div>
             </div>
             <div class="expertise-item">
-              <div class="exp-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-violet);">&#x1f4a1;</div>
+              <div class="exp-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-violet);">&#x1f4d6;</div>
               <div>
-                <h4>Innovation & Patents</h4>
-                <p>33 patents in AI, CX, and enterprise technology</p>
+                <h4>Author & Speaker</h4>
+                <p>Ship the Press Release — Working Backwards for AI development</p>
               </div>
             </div>
           </div>
@@ -1518,14 +1674,14 @@
   <section id="contact">
     <div class="section-inner contact-content">
       <span class="section-label fade-in">Let's Talk</span>
-      <h2 class="section-title fade-in">Ready to Put Your Customer<br>at the Nucleus?</h2>
+      <h2 class="section-title fade-in">Ready to Ship<br>Your Press Release?</h2>
       <p class="section-subtitle fade-in" style="margin-left: auto; margin-right: auto;">
-        Whether you're rethinking your CX architecture, exploring AI agent orchestration,
-        or building a customer-obsessed organization from scratch — let's connect.
+        Whether you need managed OpenClaw, custom AI agents, professional services,
+        or a team that builds what you actually meant — let's connect.
       </p>
 
       <div class="contact-links fade-in fade-in-delay-2">
-        <a href="https://www.linkedin.com/in/chad-david-hendren" class="contact-link contact-linkedin" target="_blank" rel="noopener">
+        <a href="https://www.linkedin.com/in/chad-david-hendren/" class="contact-link contact-linkedin" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
@@ -1544,6 +1700,48 @@
       </div>
     </div>
   </section>
+
+  <!-- ── PRE-ORDER MODAL ── -->
+  <div class="modal-overlay" id="preorderModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div id="preorderForm">
+        <h3>Pre-Order the Book</h3>
+        <p>Reserve your copy of <em>Ship the Press Release</em>. We'll notify you when it's available.</p>
+        <div class="form-group">
+          <label for="poName">Name *</label>
+          <input type="text" id="poName" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="poEmail">Email *</label>
+          <input type="email" id="poEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="poCompany">Company <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <input type="text" id="poCompany" placeholder="Your company">
+        </div>
+        <div class="form-group">
+          <label for="poSource">How did you hear about us?</label>
+          <select id="poSource">
+            <option value="">Select one</option>
+            <option value="github">GitHub</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="huggingface">Hugging Face</option>
+            <option value="openclaw">OpenClaw Community</option>
+            <option value="referral">Friend / Colleague</option>
+            <option value="search">Web Search</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <button class="form-submit" id="preorderSubmit">Reserve My Copy</button>
+      </div>
+      <div id="preorderSuccess" class="form-success" style="display:none">
+        <div class="check">&#x2714;</div>
+        <h4>You're on the list!</h4>
+        <p>We'll email you when <em>Ship the Press Release</em> is ready to ship.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ── FOOTER ── -->
   <footer>
@@ -1591,6 +1789,54 @@
     muteBtn.addEventListener('click', () => {
       heroVideo.muted = !heroVideo.muted;
       setMuteIcon(heroVideo.muted);
+    });
+
+    // ── Pre-order modal ──
+    const modal = document.getElementById('preorderModal');
+    const modalClose = document.getElementById('modalClose');
+    const preorderSubmit = document.getElementById('preorderSubmit');
+
+    document.querySelectorAll('#bookPreorder, .btn-book-primary').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('open');
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+
+    preorderSubmit.addEventListener('click', async () => {
+      const name = document.getElementById('poName').value.trim();
+      const email = document.getElementById('poEmail').value.trim();
+      const company = document.getElementById('poCompany').value.trim();
+      const source = document.getElementById('poSource').value;
+
+      if (!name || !email) return;
+
+      preorderSubmit.disabled = true;
+      preorderSubmit.textContent = 'Submitting...';
+
+      try {
+        const res = await fetch('https://l6jfuau3m7.execute-api.us-east-1.amazonaws.com/preorder', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, source }),
+        });
+
+        if (res.ok) {
+          document.getElementById('preorderForm').style.display = 'none';
+          document.getElementById('preorderSuccess').style.display = 'block';
+        } else {
+          preorderSubmit.textContent = 'Something went wrong — try again';
+          preorderSubmit.disabled = false;
+        }
+      } catch {
+        preorderSubmit.textContent = 'Something went wrong — try again';
+        preorderSubmit.disabled = false;
+      }
     });
 
     // ── Book video mute/unmute ──

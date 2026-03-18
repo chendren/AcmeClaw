@@ -1,0 +1,145 @@
+/*
+ * AcmeClaw Theme for OpenClaw
+ * Copyright 2026 Chad Hendren. All Rights Reserved.
+ *
+ * Custom CSS overlay that rebrands OpenClaw as AcmeClaw.
+ * Applied via injection into the control-ui index.html.
+ *
+ * Tool Up. Build On.
+ */
+
+/* ── AcmeClaw Color Palette ── */
+:root {
+  /* Primary brand colors */
+  --acmeclaw-red: #dc3c32;
+  --acmeclaw-red-light: #e85850;
+  --acmeclaw-red-dark: #8b1a1a;
+  --acmeclaw-red-dim: rgba(220, 60, 50, 0.15);
+
+  /* Accent */
+  --acmeclaw-cyan: #00d4ff;
+  --acmeclaw-cyan-dim: rgba(0, 212, 255, 0.15);
+  --acmeclaw-teal: #00e5cc;
+
+  /* Backgrounds */
+  --acmeclaw-bg-deep: #060a13;
+  --acmeclaw-bg-primary: #0a0e17;
+  --acmeclaw-bg-card: #111827;
+  --acmeclaw-bg-card-hover: #1a2332;
+
+  /* Text */
+  --acmeclaw-text-primary: #f0f4f8;
+  --acmeclaw-text-secondary: #94a3b8;
+  --acmeclaw-text-muted: #64748b;
+}
+
+/* ── Override OpenClaw primary accent ── */
+
+/* Buttons, links, active states - swap OpenClaw orange/red for AcmeClaw red */
+[style*="--accent"], .accent,
+button[data-variant="primary"],
+.btn-primary {
+  --accent: var(--acmeclaw-red) !important;
+}
+
+/* Sidebar and nav active indicators */
+nav a[aria-current="page"],
+nav a.active,
+.nav-item--active {
+  border-color: var(--acmeclaw-red) !important;
+  color: var(--acmeclaw-red) !important;
+}
+
+/* Chat input focus ring */
+textarea:focus, input:focus {
+  border-color: var(--acmeclaw-cyan) !important;
+  box-shadow: 0 0 0 2px var(--acmeclaw-cyan-dim) !important;
+}
+
+/* Agent avatar logo override */
+.agent-chat__avatar--logo,
+.avatar--logo {
+  background: linear-gradient(135deg, var(--acmeclaw-red), var(--acmeclaw-red-dark)) !important;
+  border: 2px solid var(--acmeclaw-red-dim) !important;
+}
+
+/* Status indicators */
+.status--online, .status--connected {
+  color: var(--acmeclaw-teal) !important;
+}
+
+/* ── Header / Title Bar Branding ── */
+
+/* Replace any OpenClaw text in header */
+.app-header__title::after,
+.header-brand::after {
+  content: "AcmeClaw" !important;
+}
+
+/* ── Scrollbar theming ── */
+::-webkit-scrollbar-thumb {
+  background: var(--acmeclaw-red-dark) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--acmeclaw-red) !important;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: var(--acmeclaw-red-dim) !important;
+  color: var(--acmeclaw-text-primary) !important;
+}
+
+/* ── Link colors ── */
+a {
+  color: var(--acmeclaw-cyan) !important;
+}
+
+a:hover {
+  color: var(--acmeclaw-red-light) !important;
+}
+
+/* ── Skill cards and channel cards ── */
+.skill-card:hover,
+.channel-card:hover {
+  border-color: var(--acmeclaw-red-dim) !important;
+  box-shadow: 0 0 20px rgba(220, 60, 50, 0.08) !important;
+}
+
+/* ── Toggle switches ── */
+input[type="checkbox"]:checked + .toggle,
+.toggle--active {
+  background-color: var(--acmeclaw-red) !important;
+}
+
+/* ── Loading spinner ── */
+.spinner, .loading-indicator {
+  border-top-color: var(--acmeclaw-red) !important;
+}
+
+/* ── Notification badges ── */
+.badge, .notification-count {
+  background-color: var(--acmeclaw-red) !important;
+}
+
+/* ── AcmeClaw footer branding ── */
+.app-footer::after {
+  content: "AcmeClaw | Tool Up. Build On. | \00A9  2026 Chad Hendren. All Rights Reserved." !important;
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--acmeclaw-text-muted);
+  padding: 0.5rem 0;
+  letter-spacing: 0.03em;
+}
+
+/* ── Canvas/Grid animations - rebrand ── */
+@keyframes acmeclaw-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(220, 60, 50, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(220, 60, 50, 0.2); }
+}
+
+.agent-card, .session-card {
+  animation: acmeclaw-glow 4s ease-in-out infinite;
+}
