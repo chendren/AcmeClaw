@@ -1,4 +1,8 @@
 .backup/
-openclaw-branded/node_modules/
-openclaw-branded/dist/**/*.map
-.backup/
+src/node_modules/
+src/ui/node_modules/
+src/packages/*/node_modules/
+src/.env
+src/**/.env
+*.map
+.DS_Store
