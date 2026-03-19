@@ -9,14 +9,14 @@
 </p>
 
 <p align="center">
-  <strong>EXFOLIATE! EXFOLIATE!</strong>
+  <strong>Managed OpenClaw for Teams That Ship</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/chendren/AcmeClaw/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/acmeclaw/acmeclaw/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/chendren/AcmeClaw/releases"><img src="https://img.shields.io/github/v/release/acmeclaw/acmeclaw?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
-  <a href="https://acmeclaw.ai"><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
+  <a href="https://www.linkedin.com/in/chad-david-hendren/"><img src="https://img.shields.io/badge/LinkedIn-Chad_Hendren-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://huggingface.co/chendren"><img src="https://img.shields.io/badge/🤗_Hugging_Face-chendren-FFB340?style=for-the-badge" alt="Hugging Face"></a>
+  <a href="https://github.com/chendren/AcmeClaw"><img src="https://img.shields.io/badge/GitHub-chendren-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/©_2026-Chad_Hendren-dc3c32?style=for-the-badge" alt="Copyright 2026 Chad Hendren"></a>
 </p>
 
 **AcmeClaw** is a _personal AI assistant_ you run on your own devices.
