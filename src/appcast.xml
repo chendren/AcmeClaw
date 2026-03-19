@@ -1,15 +1,15 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>OpenClaw</title>
+        <title>AcmeClaw</title>
         <item>
             <title>2026.2.13</title>
             <pubDate>Sat, 14 Feb 2026 04:30:23 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/openclaw/openclaw/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/acmeclaw/acmeclaw/main/appcast.xml</link>
             <sparkle:version>9846</sparkle:version>
             <sparkle:shortVersionString>2026.2.13</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>OpenClaw 2026.2.13</h2>
+            <description><![CDATA[<h2>AcmeClaw 2026.2.13</h2>
 <h3>Changes</h3>
 <ul>
 <li>Discord: send voice messages with waveform previews from local audio files (including silent delivery). (#7253) Thanks @nyanjou.</li>
@@ -41,7 +41,7 @@
 <li>OpenAI Codex/Spark: implement end-to-end <code>gpt-5.3-codex-spark</code> support across fallback/thinking/model resolution and <code>models list</code> forward-compat visibility. (#14990, #15174) Thanks @L-U-C-K-Y, @loiie45e.</li>
 <li>Agents/Codex: allow <code>gpt-5.3-codex-spark</code> in forward-compat fallback, live model filtering, and thinking presets, and fix model-picker recognition for spark. (#14990) Thanks @L-U-C-K-Y.</li>
 <li>Models/Codex: resolve configured <code>openai-codex/gpt-5.3-codex-spark</code> through forward-compat fallback during <code>models list</code>, so it is not incorrectly tagged as missing when runtime resolution succeeds. (#15174) Thanks @loiie45e.</li>
-<li>OpenAI Codex/Auth: bridge OpenClaw OAuth profiles into <code>pi</code> <code>auth.json</code> so model discovery and models-list registry resolution can use Codex OAuth credentials. (#15184) Thanks @loiie45e.</li>
+<li>OpenAI Codex/Auth: bridge AcmeClaw OAuth profiles into <code>pi</code> <code>auth.json</code> so model discovery and models-list registry resolution can use Codex OAuth credentials. (#15184) Thanks @loiie45e.</li>
 <li>Auth/OpenAI Codex: share OAuth login handling across onboarding and <code>models auth login --provider openai-codex</code>, keep onboarding alive when OAuth fails, and surface a direct OAuth help note instead of terminating the wizard. (#15406, follow-up to #14552) Thanks @zhiluo20.</li>
 <li>Onboarding/Providers: add vLLM as an onboarding provider with model discovery, auth profile wiring, and non-interactive auth-choice validation. (#12577) Thanks @gejifeng.</li>
 <li>Onboarding/Providers: preserve Hugging Face auth intent in auth-choice remapping (<code>tokenProvider=huggingface</code> with <code>authChoice=apiKey</code>) and skip env-override prompts when an explicit token is provided. (#13472) Thanks @Josephrp.</li>
@@ -60,23 +60,23 @@
 <li>Sessions/Agents: pass <code>agentId</code> through status and usage transcript-resolution paths (auto-reply, gateway usage APIs, and session cost/log loaders) so non-default agents can resolve absolute session files without path-validation failures. (#15103) Thanks @jalehman.</li>
 <li>Sessions: archive previous transcript files on <code>/new</code> and <code>/reset</code> session resets (including gateway <code>sessions.reset</code>) so stale transcripts do not accumulate on disk. (#14869) Thanks @mcaxtr.</li>
 <li>Status/Sessions: stop clamping derived <code>totalTokens</code> to context-window size, keep prompt-token snapshots wired through session accounting, and surface context usage as unknown when fresh snapshot data is missing to avoid false 100% reports. (#15114) Thanks @echoVic.</li>
-<li>CLI/Completion: route plugin-load logs to stderr and write generated completion scripts directly to stdout to avoid <code>source <(openclaw completion ...)</code> corruption. (#15481) Thanks @arosstale.</li>
+<li>CLI/Completion: route plugin-load logs to stderr and write generated completion scripts directly to stdout to avoid <code>source <(acmeclaw completion ...)</code> corruption. (#15481) Thanks @arosstale.</li>
 <li>CLI: lazily load outbound provider dependencies and remove forced success-path exits so commands terminate naturally without killing intentional long-running foreground actions. (#12906) Thanks @DrCrinkle.</li>
 <li>Security/Gateway + ACP: block high-risk tools (<code>sessions_spawn</code>, <code>sessions_send</code>, <code>gateway</code>, <code>whatsapp_login</code>) from HTTP <code>/tools/invoke</code> by default with <code>gateway.tools.{allow,deny}</code> overrides, and harden ACP permission selection to fail closed when tool identity/options are ambiguous while supporting <code>allow_always</code>/<code>reject_always</code>. (#15390) Thanks @aether-ai-agent.</li>
 <li>Security/Gateway: breaking default-behavior change - canvas IP-based auth fallback now only accepts machine-scoped addresses (RFC1918, link-local, ULA IPv6, CGNAT); public-source IP matches now require bearer token auth. (#14661) Thanks @sumleo.</li>
 <li>Security/Link understanding: block loopback/internal host patterns and private/mapped IPv6 addresses in extracted URL handling to close SSRF bypasses in link CLI flows. (#15604) Thanks @AI-Reviewer-QS.</li>
-<li>Security/Browser: constrain <code>POST /trace/stop</code>, <code>POST /wait/download</code>, and <code>POST /download</code> output paths to OpenClaw temp roots and reject traversal/escape paths.</li>
+<li>Security/Browser: constrain <code>POST /trace/stop</code>, <code>POST /wait/download</code>, and <code>POST /download</code> output paths to AcmeClaw temp roots and reject traversal/escape paths.</li>
 <li>Security/Canvas: serve A2UI assets via the shared safe-open path (<code>openFileWithinRoot</code>) to close traversal/TOCTOU gaps, with traversal and symlink regression coverage. (#10525) Thanks @abdelsfane.</li>
 <li>Security/WhatsApp: enforce <code>0o600</code> on <code>creds.json</code> and <code>creds.json.bak</code> on save/backup/restore paths to reduce credential file exposure. (#10529) Thanks @abdelsfane.</li>
 <li>Security/Gateway: sanitize and truncate untrusted WebSocket header values in pre-handshake close logs to reduce log-poisoning risk. Thanks @thewilloftheshadow.</li>
 <li>Security/Audit: add misconfiguration checks for sandbox Docker config with sandbox mode off, ineffective <code>gateway.nodes.denyCommands</code> entries, global minimal tool-profile overrides by agent profiles, and permissive extension-plugin tool reachability.</li>
 <li>Security/Audit: distinguish external webhooks (<code>hooks.enabled</code>) from internal hooks (<code>hooks.internal.enabled</code>) in attack-surface summaries to avoid false exposure signals when only internal hooks are enabled. (#13474) Thanks @mcaxtr.</li>
-<li>Security/Onboarding: clarify multi-user DM isolation remediation with explicit <code>openclaw config set session.dmScope ...</code> commands in security audit, doctor security, and channel onboarding guidance. (#13129) Thanks @VintLin.</li>
+<li>Security/Onboarding: clarify multi-user DM isolation remediation with explicit <code>acmeclaw config set session.dmScope ...</code> commands in security audit, doctor security, and channel onboarding guidance. (#13129) Thanks @VintLin.</li>
 <li>Agents/Nodes: harden node exec approval decision handling in the <code>nodes</code> tool run path by failing closed on unexpected approval decisions, and add regression coverage for approval-required retry/deny/timeout flows. (#4726) Thanks @rmorse.</li>
 <li>Android/Nodes: harden <code>app.update</code> by requiring HTTPS and gateway-host URL matching plus SHA-256 verification, stream URL camera downloads to disk with size guards to avoid memory spikes, and stop signing release builds with debug keys. (#13541) Thanks @smartprogrammer93.</li>
 <li>Routing: enforce strict binding-scope matching across peer/guild/team/roles so peer-scoped Discord/Slack bindings no longer match unrelated guild/team contexts or fallback tiers. (#15274) Thanks @lailoo.</li>
 <li>Exec/Allowlist: allow multiline heredoc bodies (<code><<</code>, <code><<-</code>) while keeping multiline non-heredoc shell commands blocked, so exec approval parsing permits heredoc input safely without allowing general newline command chaining. (#13811) Thanks @mcaxtr.</li>
-<li>Config: preserve <code>${VAR}</code> env references when writing config files so <code>openclaw config set/apply/patch</code> does not persist secrets to disk. Thanks @thewilloftheshadow.</li>
+<li>Config: preserve <code>${VAR}</code> env references when writing config files so <code>acmeclaw config set/apply/patch</code> does not persist secrets to disk. Thanks @thewilloftheshadow.</li>
 <li>Config: remove a cross-request env-snapshot race in config writes by carrying read-time env context into write calls per request, preserving <code>${VAR}</code> refs safely under concurrent gateway config mutations. (#11560) Thanks @akoscz.</li>
 <li>Config: log overwrite audit entries (path, backup target, and hash transition) whenever an existing config file is replaced, improving traceability for unexpected config clobbers.</li>
 <li>Config: keep legacy audio transcription migration strict by rejecting non-string/unsafe command tokens while still migrating valid custom script executables. (#5042) Thanks @shayan919293.</li>
@@ -99,21 +99,21 @@
 <li>Memory: switch default local embedding model to the QAT <code>embeddinggemma-300m-qat-Q8_0</code> variant for better quality at the same footprint. (#15429) Thanks @azade-c.</li>
 <li>Docs/Mermaid: remove hardcoded Mermaid init theme blocks from four docs diagrams so dark mode inherits readable theme defaults. (#15157) Thanks @heytulsiprasad.</li>
 </ul>
-<p><a href="https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/acmeclaw/acmeclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/openclaw/openclaw/releases/download/v2026.2.13/OpenClaw-2026.2.13.zip" length="22902077" type="application/octet-stream" sparkle:edSignature="RpkwlPtB2yN7UOYZWfthV5grhDUcbhcHMeicdRA864Vo/P0Hnq5aHKmSvcbWkjHut96TC57bX+AeUrL7txpLCg=="/>
+            <enclosure url="https://github.com/acmeclaw/acmeclaw/releases/download/v2026.2.13/AcmeClaw-2026.2.13.zip" length="22902077" type="application/octet-stream" sparkle:edSignature="RpkwlPtB2yN7UOYZWfthV5grhDUcbhcHMeicdRA864Vo/P0Hnq5aHKmSvcbWkjHut96TC57bX+AeUrL7txpLCg=="/>
         </item>
         <item>
             <title>2026.2.12</title>
             <pubDate>Fri, 13 Feb 2026 03:17:54 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/openclaw/openclaw/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/acmeclaw/acmeclaw/main/appcast.xml</link>
             <sparkle:version>9500</sparkle:version>
             <sparkle:shortVersionString>2026.2.12</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>OpenClaw 2026.2.12</h2>
+            <description><![CDATA[<h2>AcmeClaw 2026.2.12</h2>
 <h3>Changes</h3>
 <ul>
-<li>CLI: add <code>openclaw logs --local-time</code> to display log timestamps in local timezone. (#13818) Thanks @xialonglee.</li>
+<li>CLI: add <code>acmeclaw logs --local-time</code> to display log timestamps in local timezone. (#13818) Thanks @xialonglee.</li>
 <li>Telegram: render blockquotes as native <code><blockquote></code> tags instead of stripping them. (#14608)</li>
 <li>Config: avoid redacting <code>maxTokens</code>-like fields during config snapshot redaction, preventing round-trip validation failures in <code>/config</code>. (#14006) Thanks @constansino.</li>
 </ul>
@@ -133,12 +133,12 @@
 <li>Security/Browser: require auth for loopback browser control HTTP routes, auto-generate <code>gateway.auth.token</code> when browser control starts without auth, and add a security-audit check for unauthenticated browser control. Thanks @tcusolle.</li>
 <li>Sessions/Gateway: harden transcript path resolution and reject unsafe session IDs/file paths so session operations stay within agent sessions directories. Thanks @akhmittra.</li>
 <li>Gateway: raise WS payload/buffer limits so 5,000,000-byte image attachments work reliably. (#14486) Thanks @0xRaini.</li>
-<li>Logging/CLI: use local timezone timestamps for console prefixing, and include <code>±HH:MM</code> offsets when using <code>openclaw logs --local-time</code> to avoid ambiguity. (#14771) Thanks @0xRaini.</li>
+<li>Logging/CLI: use local timezone timestamps for console prefixing, and include <code>±HH:MM</code> offsets when using <code>acmeclaw logs --local-time</code> to avoid ambiguity. (#14771) Thanks @0xRaini.</li>
 <li>Gateway: drain active turns before restart to prevent message loss. (#13931) Thanks @0xRaini.</li>
 <li>Gateway: auto-generate auth token during install to prevent launchd restart loops. (#13813) Thanks @cathrynlavery.</li>
 <li>Gateway: prevent <code>undefined</code>/missing token in auth config. (#13809) Thanks @asklee-klawd.</li>
 <li>Gateway: handle async <code>EPIPE</code> on stdout/stderr during shutdown. (#13414) Thanks @keshav55.</li>
-<li>Gateway/Control UI: resolve missing dashboard assets when <code>openclaw</code> is installed globally via symlink-based Node managers (nvm/fnm/n/Homebrew). (#14919) Thanks @aynorica.</li>
+<li>Gateway/Control UI: resolve missing dashboard assets when <code>acmeclaw</code> is installed globally via symlink-based Node managers (nvm/fnm/n/Homebrew). (#14919) Thanks @aynorica.</li>
 <li>Cron: use requested <code>agentId</code> for isolated job auth resolution. (#13983) Thanks @0xRaini.</li>
 <li>Cron: prevent cron jobs from skipping execution when <code>nextRunAtMs</code> advances. (#14068) Thanks @WalterSumbon.</li>
 <li>Cron: pass <code>agentId</code> to <code>runHeartbeatOnce</code> for main-session jobs. (#14140) Thanks @ishikawa-pro.</li>
@@ -148,7 +148,7 @@
 <li>Cron: prevent one-shot <code>at</code> jobs from re-firing on restart after skipped/errored runs. (#13878) Thanks @lailoo.</li>
 <li>Heartbeat: prevent scheduler stalls on unexpected run errors and avoid immediate rerun loops after <code>requests-in-flight</code> skips. (#14901) Thanks @joeykrug.</li>
 <li>Cron: honor stored session model overrides for isolated-agent runs while preserving <code>hooks.gmail.model</code> precedence for Gmail hook sessions. (#14983) Thanks @shtse8.</li>
-<li>Logging/Browser: fall back to <code>os.tmpdir()/openclaw</code> for default log, browser trace, and browser download temp paths when <code>/tmp/openclaw</code> is unavailable.</li>
+<li>Logging/Browser: fall back to <code>os.tmpdir()/acmeclaw</code> for default log, browser trace, and browser download temp paths when <code>/tmp/acmeclaw</code> is unavailable.</li>
 <li>WhatsApp: convert Markdown bold/strikethrough to WhatsApp formatting. (#14285) Thanks @Raikan10.</li>
 <li>WhatsApp: allow media-only sends and normalize leading blank payloads. (#14408) Thanks @karimnaguib.</li>
 <li>WhatsApp: default MIME type for voice messages when Baileys omits it. (#14444) Thanks @mcaxtr.</li>
@@ -171,7 +171,7 @@
 <li>Feishu: trigger mention-gated group handling only when the bot itself is mentioned (not just any mention). (#11088) Thanks @openperf.</li>
 <li>Feishu: probe status uses the resolved account context for multi-account credential checks. (#11233) Thanks @onevcat.</li>
 <li>Feishu DocX: preserve top-level converted block order using <code>firstLevelBlockIds</code> when writing/appending documents. (#13994) Thanks @Cynosure159.</li>
-<li>Feishu plugin packaging: remove <code>workspace:*</code> <code>openclaw</code> dependency from <code>extensions/feishu</code> and sync lockfile for install compatibility. (#14423) Thanks @jackcooper2015.</li>
+<li>Feishu plugin packaging: remove <code>workspace:*</code> <code>acmeclaw</code> dependency from <code>extensions/feishu</code> and sync lockfile for install compatibility. (#14423) Thanks @jackcooper2015.</li>
 <li>CLI/Wizard: exit with code 1 when <code>configure</code>, <code>agents add</code>, or interactive <code>onboard</code> wizards are canceled, so <code>set -e</code> automation stops correctly. (#14156) Thanks @0xRaini.</li>
 <li>Media: strip <code>MEDIA:</code> lines with local paths instead of leaking as visible text. (#14399) Thanks @0xRaini.</li>
 <li>Config/Cron: exclude <code>maxTokens</code> from config redaction and honor <code>deleteAfterRun</code> on skipped cron jobs. (#13342) Thanks @niceysam.</li>
@@ -195,18 +195,18 @@
 <li>Discord tests: use a partial @buape/carbon mock in slash command coverage. (#13262) Thanks @arosstale.</li>
 <li>Tests: update thread ID handling in Slack message collection tests. (#14108) Thanks @swizzmagik.</li>
 </ul>
-<p><a href="https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/acmeclaw/acmeclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/openclaw/openclaw/releases/download/v2026.2.12/OpenClaw-2026.2.12.zip" length="22877692" type="application/octet-stream" sparkle:edSignature="TGylTM4/7Lab+qp1nuPeOAmEVV1WkafXUPub8ws0z/0mYfbVygRuiev+u3zdPjQWhLnGYTgRgKVyW+kB2+Q2BQ=="/>
+            <enclosure url="https://github.com/acmeclaw/acmeclaw/releases/download/v2026.2.12/AcmeClaw-2026.2.12.zip" length="22877692" type="application/octet-stream" sparkle:edSignature="TGylTM4/7Lab+qp1nuPeOAmEVV1WkafXUPub8ws0z/0mYfbVygRuiev+u3zdPjQWhLnGYTgRgKVyW+kB2+Q2BQ=="/>
         </item>
         <item>
             <title>2026.2.9</title>
             <pubDate>Mon, 09 Feb 2026 13:23:25 -0600</pubDate>
-            <link>https://raw.githubusercontent.com/openclaw/openclaw/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/acmeclaw/acmeclaw/main/appcast.xml</link>
             <sparkle:version>9194</sparkle:version>
             <sparkle:shortVersionString>2026.2.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>OpenClaw 2026.2.9</h2>
+            <description><![CDATA[<h2>AcmeClaw 2026.2.9</h2>
 <h3>Added</h3>
 <ul>
 <li>iOS: alpha node app + setup-code onboarding. (#11756) Thanks @mbelinky.</li>
@@ -251,9 +251,9 @@
 <li>Media understanding: recognize <code>.caf</code> audio attachments for transcription. (#10982) Thanks @succ985.</li>
 <li>State dir: honor <code>OPENCLAW_STATE_DIR</code> for default device identity and canvas storage paths. (#4824) Thanks @kossoy.</li>
 </ul>
-<p><a href="https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/acmeclaw/acmeclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/openclaw/openclaw/releases/download/v2026.2.9/OpenClaw-2026.2.9.zip" length="22872529" type="application/octet-stream" sparkle:edSignature="zvgwqlgqI7J5Gsi9VSULIQTMKqLiGE5ulC6NnRLKtOPphQsHZVdYSWm0E90+Yq8mG4lpsvbxQOSSPxpl43QTAw=="/>
+            <enclosure url="https://github.com/acmeclaw/acmeclaw/releases/download/v2026.2.9/AcmeClaw-2026.2.9.zip" length="22872529" type="application/octet-stream" sparkle:edSignature="zvgwqlgqI7J5Gsi9VSULIQTMKqLiGE5ulC6NnRLKtOPphQsHZVdYSWm0E90+Yq8mG4lpsvbxQOSSPxpl43QTAw=="/>
         </item>
     </channel>
 </rss>

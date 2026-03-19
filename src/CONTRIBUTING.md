@@ -1,12 +1,12 @@
-# Contributing to OpenClaw
+# Contributing to AcmeClaw
 
 Welcome to the lobster tank! 🦞
 
 ## Quick Links
 
-- **GitHub:** https://github.com/openclaw/openclaw
+- **GitHub:** https://github.com/acmeclaw/acmeclaw
 - **Discord:** https://discord.gg/qkhbAGHRBT
-- **X/Twitter:** [@steipete](https://x.com/steipete) / [@openclaw](https://x.com/openclaw)
+- **X/Twitter:** [@steipete](https://x.com/steipete) / [@acmeclaw](https://x.com/acmeclaw)
 
 ## Maintainers
 
@@ -34,12 +34,12 @@ Welcome to the lobster tank! 🦞
 ## How to Contribute
 
 1. **Bugs & small fixes** → Open a PR!
-2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/openclaw/openclaw/discussions) or ask in Discord first
+2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/acmeclaw/acmeclaw/discussions) or ask in Discord first
 3. **Questions** → Discord #setup-help
 
 ## Before You PR
 
-- Test locally with your OpenClaw instance
+- Test locally with your AcmeClaw instance
 - Run tests: `pnpm build && pnpm check && pnpm test`
 - Ensure CI checks pass
 - Keep PRs focused (one thing per PR)
@@ -79,23 +79,23 @@ We are currently prioritizing:
 
 - **Stability**: Fixing edge cases in channel connections (WhatsApp/Telegram).
 - **UX**: Improving the onboarding wizard and error messages.
-- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for OpenClaw skills.
+- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for AcmeClaw skills.
 - **Performance**: Optimizing token usage and compaction logic.
 
-Check the [GitHub Issues](https://github.com/openclaw/openclaw/issues) for "good first issue" labels!
+Check the [GitHub Issues](https://github.com/acmeclaw/acmeclaw/issues) for "good first issue" labels!
 
 ## Report a Vulnerability
 
 We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
 
-- **Core CLI and gateway** — [openclaw/openclaw](https://github.com/openclaw/openclaw)
-- **macOS desktop app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/macos)
-- **iOS app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/ios)
-- **Android app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/android)
-- **ClawHub** — [openclaw/clawhub](https://github.com/openclaw/clawhub)
-- **Trust and threat model** — [openclaw/trust](https://github.com/openclaw/trust)
+- **Core CLI and gateway** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw)
+- **macOS desktop app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/macos)
+- **iOS app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/ios)
+- **Android app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/android)
+- **ClawHub** — [acmeclaw/clawhub](https://github.com/acmeclaw/clawhub)
+- **Trust and threat model** — [acmeclaw/trust](https://github.com/acmeclaw/trust)
 
-For issues that don't fit a specific repo, or if you're unsure, email **security@openclaw.ai** and we'll route it.
+For issues that don't fit a specific repo, or if you're unsure, email **security@acmeclaw.ai** and we'll route it.
 
 ### Required in Reports
 

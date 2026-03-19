@@ -1,21 +1,21 @@
 # Security Policy
 
-If you believe you've found a security issue in OpenClaw, please report it privately.
+If you believe you've found a security issue in AcmeClaw, please report it privately.
 
 ## Reporting
 
 Report vulnerabilities directly to the repository where the issue lives:
 
-- **Core CLI and gateway** — [openclaw/openclaw](https://github.com/openclaw/openclaw)
-- **macOS desktop app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/macos)
-- **iOS app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/ios)
-- **Android app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/android)
-- **ClawHub** — [openclaw/clawhub](https://github.com/openclaw/clawhub)
-- **Trust and threat model** — [openclaw/trust](https://github.com/openclaw/trust)
+- **Core CLI and gateway** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw)
+- **macOS desktop app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/macos)
+- **iOS app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/ios)
+- **Android app** — [acmeclaw/acmeclaw](https://github.com/acmeclaw/acmeclaw) (apps/android)
+- **ClawHub** — [acmeclaw/clawhub](https://github.com/acmeclaw/clawhub)
+- **Trust and threat model** — [acmeclaw/trust](https://github.com/acmeclaw/trust)
 
-For issues that don't fit a specific repo, or if you're unsure, email **security@openclaw.ai** and we'll route it.
+For issues that don't fit a specific repo, or if you're unsure, email **security@acmeclaw.ai** and we'll route it.
 
-For full reporting instructions see our [Trust page](https://trust.openclaw.ai).
+For full reporting instructions see our [Trust page](https://trust.acmeclaw.ai).
 
 ### Required in Reports
 
@@ -32,34 +32,34 @@ Reports without reproduction steps, demonstrated impact, and remediation advice 
 
 ## Security & Trust
 
-**Jamieson O'Reilly** ([@theonejvo](https://twitter.com/theonejvo)) is Security & Trust at OpenClaw. Jamieson is the founder of [Dvuln](https://dvuln.com) and brings extensive experience in offensive security, penetration testing, and security program development.
+**Jamieson O'Reilly** ([@theonejvo](https://twitter.com/theonejvo)) is Security & Trust at AcmeClaw. Jamieson is the founder of [Dvuln](https://dvuln.com) and brings extensive experience in offensive security, penetration testing, and security program development.
 
 ## Bug Bounties
 
-OpenClaw is a labor of love. There is no bug bounty program and no budget for paid reports. Please still disclose responsibly so we can fix issues quickly.
+AcmeClaw is a labor of love. There is no bug bounty program and no budget for paid reports. Please still disclose responsibly so we can fix issues quickly.
 The best way to help the project right now is by sending PRs.
 
 ## Out of Scope
 
 - Public Internet Exposure
-- Using OpenClaw in ways that the docs recommend not to
+- Using AcmeClaw in ways that the docs recommend not to
 - Prompt injection attacks
 
 ## Operational Guidance
 
-For threat model + hardening guidance (including `openclaw security audit --deep` and `--fix`), see:
+For threat model + hardening guidance (including `acmeclaw security audit --deep` and `--fix`), see:
 
-- `https://docs.openclaw.ai/gateway/security`
+- `https://docs.acmeclaw.ai/gateway/security`
 
 ### Web Interface Safety
 
-OpenClaw's web interface is intended for local use only. Do **not** bind it to the public internet; it is not hardened for public exposure.
+AcmeClaw's web interface is intended for local use only. Do **not** bind it to the public internet; it is not hardened for public exposure.
 
 ## Runtime Requirements
 
 ### Node.js Version
 
-OpenClaw requires **Node.js 22.12.0 or later** (LTS). This version includes important security patches:
+AcmeClaw requires **Node.js 22.12.0 or later** (LTS). This version includes important security patches:
 
 - CVE-2025-59466: async_hooks DoS vulnerability
 - CVE-2026-21636: Permission model bypass vulnerability
@@ -72,7 +72,7 @@ node --version  # Should be v22.12.0 or later
 
 ### Docker Security
 
-When running OpenClaw in Docker:
+When running AcmeClaw in Docker:
 
 1. The official image runs as a non-root user (`node`) for reduced attack surface
 2. Use `--read-only` flag when possible for additional filesystem protection
@@ -82,8 +82,8 @@ Example secure Docker run:
 
 ```bash
 docker run --read-only --cap-drop=ALL \
-  -v openclaw-data:/app/data \
-  openclaw/openclaw:latest
+  -v acmeclaw-data:/app/data \
+  acmeclaw/acmeclaw:latest
 ```
 
 ## Security Scanning
