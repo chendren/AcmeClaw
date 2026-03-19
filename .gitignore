@@ -1,1 +1,4 @@
 .backup/
+openclaw-branded/node_modules/
+openclaw-branded/dist/**/*.map
+.backup/
